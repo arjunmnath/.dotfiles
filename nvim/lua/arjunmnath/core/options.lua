@@ -44,13 +44,21 @@ opt.undofile = true
 opt.hlsearch = false
 opt.incsearch = true
 
--- opt.scrolloff = 8
--- opt.signcolumn = "yes"
--- opt.isfname:append("@-@")
--- opt.updatetime = 50
--- opt.colorcolumn = "80"
--- vim.g.mapleader = " "
+opt.scrolloff = 8
+opt.signcolumn = "yes"
+opt.isfname:append("@-@")
+opt.updatetime = 50
 
+
+-- autosave
+vim.api.nvim_create_autocmd({"TextChanged", "InsertLeave", "BufLeave"}, {
+    pattern = "*",
+    callback = function()
+        if vim.bo.modified then
+            vim.cmd("silent! write")
+        end
+    end,
+})
 
 
 
