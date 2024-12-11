@@ -1,0 +1,53 @@
+{
+    "modules": [
+       {
+            "name": "Installing brew",
+            "commands": ["/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""]
+            "no_of_commands": 1,
+            "type": "install",
+            "status": false
+        },
+        {
+            "name": "Installing git",
+            "commands": ["brew install git"]
+            "no_of_commands": 1,
+            "type": "install",
+            "status": false
+        },
+        {
+            "name": "Install neovim",
+            "commands": ["brew install neovim"]
+            "no_of_commands": 1,
+            "type": "install",
+            "status": false
+        },
+        {
+            "name": "Install fzf",
+            "commands": ["brew install fzf"]
+            "no_of_commands": 1,
+            "type": "install",
+            "status": false
+        },
+        {
+            "name": "Install Oh-My-Zsh",
+            "commands": ["sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""]
+            "no_of_commands": 1,
+            "type": "install",
+            "status": false
+        },
+        {
+            "name": "Install tmux",
+            "commands": ["brew install Tmux"]
+            "no_of_commands": 1,
+            "type": "install",
+            "status": false
+        },
+        {
+            "name": "Install Tmux Plugin Manager",
+            "commands": ["git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"]
+            "no_of_commands": 1,
+            "type": "install",
+            "status": false
+        },
+    ]
+}
