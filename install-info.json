@@ -49,5 +49,12 @@
             "type": "install",
             "status": false
         },
+        {
+            "name": "Install Ripgrep (for Telescope)",
+            "commands": ["brew install ripgrep"]
+            "no_of_commands": 1,
+            "type": "install",
+            "status": false
+        }
     ]
 }
