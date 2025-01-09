@@ -120,3 +120,5 @@ unset __conda_setup
 alias ca="conda activate \$(conda env list | fzf | awk '{print \$1}')"
 alias cde="conda deactivate"
 
+#gpg config
+export GPG_TTY=$(tty)
