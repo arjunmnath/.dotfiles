@@ -122,3 +122,20 @@ alias cde="conda deactivate"
 
 #gpg config
 export GPG_TTY=$(tty)
+
+#android
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH="$JAVA_HOME/bin:$PATH"
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
+export PATH=$HOME/development/flutter/bin:$PATH
+eval "$(rbenv init - zsh)"
+
+
+
+# temp alias
+alias connectGcp="ssh -i ~/.ssh/gcp_vm_key arjunmnath356@34.46.30.168"
+
+# emcc
+export EMSDK_QUIET=1
+source /Users/arjunmnath/emsdk/emsdk_env.sh
