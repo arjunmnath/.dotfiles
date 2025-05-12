@@ -1,1 +1,3 @@
-inoremap jj <Esc>
+inoremap jk <Esc>
+set clipboard=unnamedplus
+set clipboard^=ideaput
