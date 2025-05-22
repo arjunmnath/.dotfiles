@@ -22,13 +22,14 @@ return {
 				},
 				vimgrep_arguments = {
 					"rg",
-					"--color=always",
+					"--color=never", -- <-- change this
 					"--no-heading",
 					"--with-filename",
 					"--line-number",
 					"--column",
 					"--smart-case",
 					"--hidden",
+					"--no-ignore", -- optional but recommended
 				},
 			},
 		})

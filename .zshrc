@@ -144,3 +144,4 @@ source /Users/arjunmnath/emsdk/emsdk_env.sh
 # cmake alias
 alias cbt="cmake --preset test && cmake --build build -- -j$(nproc)"
 alias cbd="cmake --preset debug && cmake --build build -- -j$(nproc)"
+
