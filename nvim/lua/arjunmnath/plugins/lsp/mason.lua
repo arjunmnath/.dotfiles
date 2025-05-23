@@ -25,6 +25,8 @@ return {
 
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
+			--
+			automatic_enable = false,
 			ensure_installed = {
 				"html",
 				"cssls",
@@ -34,6 +36,10 @@ return {
 				"clangd",
 				"cmake",
 				"harper_ls",
+			},
+			automatic_installation = {
+				enable = true,
+				include = { "all" }, -- or a specific list
 			},
 		})
 
