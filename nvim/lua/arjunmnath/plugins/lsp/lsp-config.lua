@@ -99,42 +99,33 @@ return {
 		end
 
 		-- Setup mason-lspconfig handlers
-		mason_lspconfig.setup_handlers({
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["emmet_ls"] = function()
-				lspconfig["emmet_ls"].setup({
-					capabilities = capabilities,
-					filetypes = {
-						"html",
-						"typescriptreact",
-						"javascriptreact",
-						"css",
-						"sass",
-						"scss",
-						"less",
-						"svelte",
+
+		for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
+			local opts = {
+				capabilities = capabilities,
+			}
+
+			if server == "lua_ls" then
+				opts.settings = {
+					Lua = {
+						diagnostics = { globals = { "vim" } },
+						completion = { callSnippet = "Replace" },
 					},
-				})
-			end,
-			["lua_ls"] = function()
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				})
-			end,
-		})
+				}
+			elseif server == "emmet_ls" then
+				opts.filetypes = {
+					"html",
+					"typescriptreact",
+					"javascriptreact",
+					"css",
+					"sass",
+					"scss",
+					"less",
+					"svelte",
+				}
+			end
+
+			lspconfig[server].setup(opts)
+		end
 	end,
 }
