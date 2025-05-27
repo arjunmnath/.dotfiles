@@ -1,2 +1,4 @@
 nvim-backup/
 .idea/
+
+.DS_Store
