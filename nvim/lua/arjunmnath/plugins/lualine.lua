@@ -79,11 +79,6 @@ return {
 				lualine_c = {
 					lsp_progress,
 					{
-						"diagnostics",
-						sources = { "nvim_diagnostic" },
-						symbols = { error = "E:", warn = "W:", info = "I:" },
-					},
-					{
 						function()
 							local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
 							local clients = vim.lsp.get_active_clients()

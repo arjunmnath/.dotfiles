@@ -87,3 +87,6 @@ end, { desc = "Go to next harpoon file" })
 vim.keymap.set("n", "<leader>gr", function()
 	harpoon:list():remove()
 end, { desc = "Remove file from Harpoon list" })
+
+-- select entire file
+vim.keymap.set("n", "<leader>a", "gg^vG$", { noremap = true, silent = true })
