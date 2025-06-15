@@ -90,3 +90,13 @@ end, { desc = "Remove file from Harpoon list" })
 
 -- select entire file
 vim.keymap.set("n", "<leader>a", "gg^vG$", { noremap = true, silent = true })
+
+--- copy & paste into named buffers
+vim.keymap.set("n", "<leader>ya", '"ayy', { desc = "Yank current line into buffer a" })
+vim.keymap.set("v", "<leader>ya", '"ay', { desc = "Yank visually selected text into buffer a" })
+vim.keymap.set("n", "<leader>yb", '"byy', { desc = "Yank current line into buffer b" })
+vim.keymap.set("v", "<leader>yb", '"by', { desc = "Yank visually selected text into buffer b" })
+vim.keymap.set("n", "<leader>pa", '"ap', { desc = "Paste from buffer a" })
+vim.keymap.set("v", "<leader>pa", '"ap', { desc = "Paste from buffer a (visual)" })
+vim.keymap.set("n", "<leader>pb", '"bp', { desc = "Paste from buffer " })
+vim.keymap.set("v", "<leader>pb", '"bp', { desc = "Paste from buffer b (visual)" })
