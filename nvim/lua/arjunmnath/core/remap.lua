@@ -61,7 +61,6 @@ harpoon:setup()
 vim.keymap.set("n", "<leader>ga", function()
 	harpoon:list():add()
 end, { desc = "Add file to harpoon list" })
-
 vim.keymap.set("n", "<leader>gq", function()
 	harpoon.ui:toggle_quick_menu(harpoon:list())
 end, { desc = "open harpoon quick menu" })
@@ -100,3 +99,7 @@ vim.keymap.set("n", "<leader>pa", '"ap', { desc = "Paste from buffer a" })
 vim.keymap.set("v", "<leader>pa", '"ap', { desc = "Paste from buffer a (visual)" })
 vim.keymap.set("n", "<leader>pb", '"bp', { desc = "Paste from buffer " })
 vim.keymap.set("v", "<leader>pb", '"bp', { desc = "Paste from buffer b (visual)" })
+
+-- removed default mapping to avoid conflict
+vim.api.nvim_set_keymap("n", "<C-]>", "<Nop>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-[>", "<Nop>", { noremap = true, silent = true })

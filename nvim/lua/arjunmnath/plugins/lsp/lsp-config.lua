@@ -9,7 +9,9 @@ return {
 	config = function()
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
-
+		vim.diagnostic.config({
+			float = { border = "rounded" },
+		})
 		-- Get Conda Python Path
 		local conda_prefix = os.getenv("CONDA_PREFIX")
 		local python_path = conda_prefix and (conda_prefix .. "/bin/python") or vim.fn.exepath("python3")
