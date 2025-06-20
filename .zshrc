@@ -99,8 +99,8 @@ VI_MODE_CURSOR_VISUAL=6
 VI_MODE_CURSOR_INSERT=6
 VI_MODE_CURSOR_OPPEND=0
 bindkey -M viins 'jj' vi-cmd-mode
-bindkey "^[\`" autosuggest-accept
-bindkey "^]" autosuggest-execute
+bindkey -M viins "^A" autosuggest-accept
+bindkey -M viins "^E" autosuggest-execute
 
 
 # >>> conda initialize >>>
@@ -131,7 +131,8 @@ export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$
 export PATH=$HOME/development/flutter/bin:$PATH
 eval "$(rbenv init - zsh)"
 
-
+#nvim mason binaries for linting
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
 # temp alias
 alias connectGcp="ssh -i ~/.ssh/gcp_vm_key arjunmnath356@34.46.30.168"

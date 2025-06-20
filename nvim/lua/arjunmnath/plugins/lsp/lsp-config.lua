@@ -9,6 +9,7 @@ return {
 	config = function()
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
+
 		vim.diagnostic.config({
 			float = { border = "rounded" },
 		})
@@ -98,36 +99,47 @@ return {
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
-
-		-- Setup mason-lspconfig handlers
-
-		for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
-			local opts = {
-				capabilities = capabilities,
-			}
-
-			if server == "lua_ls" then
-				opts.settings = {
-					Lua = {
-						diagnostics = { globals = { "vim" } },
-						completion = { callSnippet = "Replace" },
-					},
-				}
-			elseif server == "emmet_ls" then
-				opts.filetypes = {
-					"html",
-					"typescriptreact",
-					"javascriptreact",
-					"css",
-					"sass",
-					"scss",
-					"less",
-					"svelte",
-				}
+			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+			for type, icon in pairs(signs) do
+				local hl = "DiagnosticSign" .. type
+				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 			end
 
-			lspconfig[server].setup(opts)
+			-- Setup mason-lspconfig handlers
+
+			for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
+				local opts = {
+					capabilities = capabilities,
+				}
+
+				if server == "lua_ls" then
+					opts.settings = {
+						Lua = {
+							diagnostics = { globals = { "vim" } },
+							completion = { callSnippet = "Replace" },
+						},
+					}
+				elseif server == "emmet_ls" then
+					opts.filetypes = {
+						"html",
+						"typescriptreact",
+						"javascriptreact",
+						"css",
+						"sass",
+						"scss",
+						"less",
+						"svelte",
+					}
+				elseif server == "tinymist" then
+					opts.single_file_support = true
+					opts.settings = {
+						formatterMode = "typstfmt",
+						exportPdf = "onSave",
+						semanticTokens = "disable",
+					}
+				end
+				lspconfig[server].setup(opts)
+			end
 		end
 	end,
 }
