@@ -1,26 +1,24 @@
-local opt = vim.opt 
+local opt = vim.opt
 
 vim.g.mapleader = " "
 
 opt.nu = true
-opt.relativenumber = true 
-opt.number = true 
+opt.relativenumber = true
+opt.number = true
 
-
-opt.tabstop = 4 
-opt.shiftwidth = 4 
+opt.tabstop = 4
+opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
 opt.softtabstop = 4
 opt.smartindent = true
 
-opt.wrap = false 
+opt.wrap = false
 
 opt.ignorecase = true
 opt.smartcase = true
 
 opt.cursorline = true -- highlight the current cursor line
-
 
 opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
@@ -33,13 +31,12 @@ opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or 
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 -- split windows
-opt.splitright = true 
+opt.splitright = true
 opt.splitbelow = true
 opt.swapfile = false
 opt.backup = false
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.undofile = true
-
 
 opt.hlsearch = false
 opt.incsearch = true
@@ -49,17 +46,17 @@ opt.signcolumn = "yes"
 opt.isfname:append("@-@")
 opt.updatetime = 50
 
-
 -- autosave
-vim.api.nvim_create_autocmd({"TextChanged", "InsertLeave", "BufLeave"}, {
-    pattern = "*",
-    callback = function()
-        if vim.bo.modified then
-            vim.cmd("silent! write")
-        end
-    end,
+vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave", "BufLeave" }, {
+	pattern = "*",
+	callback = function()
+		if vim.bo.modified then
+			vim.cmd("silent! write")
+		end
+	end,
 })
-
-
-
-
+-- metal config
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "*.metal",
+	command = "setfiletype cpp",
+})

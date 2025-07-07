@@ -103,3 +103,11 @@ vim.keymap.set("v", "<leader>pb", '"bp', { desc = "Paste from buffer b (visual)"
 -- removed default mapping to avoid conflict
 vim.api.nvim_set_keymap("n", "<C-]>", "<Nop>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-[>", "<Nop>", { noremap = true, silent = true })
+-- custom enable disable logic for smear cursor
+vim.keymap.set("n", "<leader>scd", function()
+	require("smear_cursor").enabled = false
+end, { desc = "Disable Smear Cursor" })
+
+vim.keymap.set("n", "<leader>sce", function()
+	require("smear_cursor").enable = true
+end, { desc = "Enable Smear Cursor" })

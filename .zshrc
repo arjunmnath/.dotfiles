@@ -99,8 +99,8 @@ VI_MODE_CURSOR_VISUAL=6
 VI_MODE_CURSOR_INSERT=6
 VI_MODE_CURSOR_OPPEND=0
 bindkey -M viins 'jj' vi-cmd-mode
-bindkey -M viins "^A" autosuggest-accept
-bindkey -M viins "^E" autosuggest-execute
+bindkey -M viins "^\[" autosuggest-accept
+bindkey -M viins "^\]" autosuggest-execute
 
 
 # >>> conda initialize >>>

@@ -95,51 +95,52 @@ return {
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		-- Diagnostic symbols in the sign column
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-			for type, icon in pairs(signs) do
-				local hl = "DiagnosticSign" .. type
-				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-			end
+		vim.diagnostic.config({
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.HINT] = "󰠠 ",
+					[vim.diagnostic.severity.INFO] = " ",
+				},
+			},
+		})
 
-			-- Setup mason-lspconfig handlers
-
-			for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
-				local opts = {
-					capabilities = capabilities,
+		-- Setup mason-lspconfig handlers
+		for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
+			local opts = {
+				capabilities = capabilities,
+			}
+			if server == "tinymist" then
+				opts.single_file_support = true
+				opts.filetypes = { "typst" }
+				opts.settings = {
+					formatterMode = "typstfmt",
+					exportPdf = "onSave",
+					semanticTokens = "disable",
 				}
-
-				if server == "lua_ls" then
-					opts.settings = {
-						Lua = {
-							diagnostics = { globals = { "vim" } },
-							completion = { callSnippet = "Replace" },
-						},
-					}
-				elseif server == "emmet_ls" then
-					opts.filetypes = {
-						"html",
-						"typescriptreact",
-						"javascriptreact",
-						"css",
-						"sass",
-						"scss",
-						"less",
-						"svelte",
-					}
-				elseif server == "tinymist" then
-					opts.single_file_support = true
-					opts.settings = {
-						formatterMode = "typstfmt",
-						exportPdf = "onSave",
-						semanticTokens = "disable",
-					}
-				end
-				lspconfig[server].setup(opts)
+			elseif server == "lua_ls" then
+				opts.settings = {
+					Lua = {
+						diagnostics = { globals = { "vim" } },
+						completion = { callSnippet = "Replace" },
+					},
+				}
+			elseif server == "emmet_ls" then
+				opts.filetypes = {
+					"html",
+					"typescriptreact",
+					"javascriptreact",
+					"css",
+					"sass",
+					"scss",
+					"less",
+					"svelte",
+				}
+			elseif server == "clangd" then
+				opts.filetypes = { "c", "cpp", "objc", "objcpp", "metal" }
 			end
+			lspconfig[server].setup(opts)
 		end
 	end,
 }

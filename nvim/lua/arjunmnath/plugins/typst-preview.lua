@@ -7,7 +7,7 @@ return {
 			dependencies_bin = {
 				["tinymist"] = "tinymist",
 			},
-			invert_colors = "always",
+			invert_colors = "auto",
 		})
 		vim.api.nvim_create_user_command("OpenPdf", function()
 			local filepath = vim.api.nvim_buf_get_name(0)
