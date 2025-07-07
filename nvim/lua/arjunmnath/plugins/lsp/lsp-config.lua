@@ -119,6 +119,23 @@ return {
 					exportPdf = "onSave",
 					semanticTokens = "disable",
 				}
+				opts.on_attach = function(client, bufnr)
+					vim.keymap.set("n", "<leader>ltp", function()
+						client:exec_cmd({
+							title = "pin",
+							command = "tinymist.pinMain",
+							arguments = { vim.api.nvim_buf_get_name(0) },
+						}, { bufnr = bufnr })
+					end, { desc = "[T]inymist [P]in", noremap = true })
+
+					vim.keymap.set("n", "<leader>ltu", function()
+						client:exec_cmd({
+							title = "unpin",
+							command = "tinymist.pinMain",
+							arguments = { vim.v.null },
+						}, { bufnr = bufnr })
+					end, { desc = "[T]inymist [U]npin", noremap = true })
+				end
 			elseif server == "lua_ls" then
 				opts.settings = {
 					Lua = {
