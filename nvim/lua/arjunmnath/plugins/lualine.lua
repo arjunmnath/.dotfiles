@@ -3,8 +3,7 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local lualine = require("lualine")
-		local lazy_status = require("lazy.status") -- to configure lazy pending updates count
-
+		local lazy_status = require("lazy.status")
 		local colors = {
 			blue = "#65D1FF",
 			green = "#3EFFDC",
@@ -72,8 +71,6 @@ return {
 			options = {
 				theme = "auto", -- Use your current theme
 				icons_enabled = true, -- Enable icons
-				-- section_separators = { left = '', right = '' }, -- Optional
-				-- component_separators = { left = '', right = '' }, -- Optional
 			},
 			sections = {
 				lualine_c = {

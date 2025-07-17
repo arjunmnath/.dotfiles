@@ -10,6 +10,8 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
+		local open_with_trouble = require("trouble.sources.telescope").open
+		-- local add_to_trouble = require("trouble.sources.telescope").add
 		telescope.setup({
 			defaults = {
 				path_display = { "smart" },
@@ -18,7 +20,9 @@ return {
 						["<C-k>"] = actions.move_selection_previous,
 						["<C-j>"] = actions.move_selection_next,
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+						["<C-t>"] = open_with_trouble,
 					},
+					n = { ["<C-t>"] = open_with_trouble },
 				},
 				vimgrep_arguments = {
 					"rg",
