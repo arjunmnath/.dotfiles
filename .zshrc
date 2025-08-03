@@ -1,3 +1,4 @@
+
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
