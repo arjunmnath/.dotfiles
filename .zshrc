@@ -136,8 +136,7 @@ eval "$(rbenv init - zsh)"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
 # temp alias
-alias connectGcp="ssh -i ~/.ssh/gcp_vm_key arjunmnath356@34.46.30.168"
-
+alias connectGcp="ssh -i ~/.ssh/gcp_vm_key iron@34.100.235.255"
 # emcc
 export EMSDK_QUIET=1
 source /Users/arjunmnath/emsdk/emsdk_env.sh
