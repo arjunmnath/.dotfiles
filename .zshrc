@@ -129,7 +129,7 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH="$JAVA_HOME/bin:$PATH"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
-export PATH=$HOME/development/flutter/bin:$PATH
+export PATH=$HOME/develop/flutter/bin:$PATH
 eval "$(rbenv init - zsh)"
 
 #nvim mason binaries for linting
@@ -138,11 +138,43 @@ export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 # temp alias
 alias connectGcp="ssh -i ~/.ssh/gcp_vm_key iron@34.100.235.255"
 # emcc
-export EMSDK_QUIET=1
-source /Users/arjunmnath/emsdk/emsdk_env.sh
 
 
 # cmake alias
 alias cbt="cmake --preset test && cmake --build build -- -j$(nproc)"
 alias cbd="cmake --preset debug && cmake --build build -- -j$(nproc)"
 
+export PATH="$HOME/.local/bin:$PATH"
+export GPG_TTY=$(tty)
+
+# Added by Antigravity
+export PATH="/Users/arjunmnath/.antigravity/antigravity/bin:$PATH"
+
+
+ export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/arjunmnath/.dart-cli-completion/zsh-config.zsh ]] && . /Users/arjunmnath/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+export PATH="/Users/arjunmnath/.shorebird/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/arjunmnath/.antigravity/antigravity/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/arjunmnath/.antigravity/antigravity/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/arjunmnath/.antigravity/antigravity/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/arjunmnath/.antigravity/antigravity/bin:$PATH"
+export PATH="/Library/TeX/texbin:$PATH"
+
+# Added by Antigravity IDE
+export PATH="/Users/arjunmnath/.antigravity-ide/antigravity-ide/bin:$PATH"
+
+alias rm='trash'
+alias del='command rm'

@@ -13,12 +13,14 @@ return {
 		vim.diagnostic.config({
 			float = { border = "rounded" },
 		})
+
 		-- Get Conda Python Path
 		local conda_prefix = os.getenv("CONDA_PREFIX")
 		local python_path = conda_prefix and (conda_prefix .. "/bin/python") or vim.fn.exepath("python3")
 		if conda_prefix then
 			vim.env.VIRTUAL_ENV = conda_prefix
 		end
+
 		-- If Conda is activated, set the pythonPath
 		lspconfig.pyright.setup({
 			cmd = { python_path, "-m", "pyright", "--stdio" }, -- Ensures using the correct python from Conda
@@ -48,7 +50,6 @@ return {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
 				local opts = { buffer = ev.buf, silent = true }
-
 				-- Set keymaps
 				opts.desc = "Show LSP references"
 				keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
@@ -111,36 +112,26 @@ return {
 			local opts = {
 				capabilities = capabilities,
 			}
-			if server == "tinymist" then
-				opts.single_file_support = true
-				opts.filetypes = { "typst" }
-				opts.settings = {
-					formatterMode = "typstfmt",
-					exportPdf = "onSave",
-					semanticTokens = "disable",
-				}
-				opts.on_attach = function(client, bufnr)
-					vim.keymap.set("n", "<leader>ltp", function()
-						client:exec_cmd({
-							title = "pin",
-							command = "tinymist.pinMain",
-							arguments = { vim.api.nvim_buf_get_name(0) },
-						}, { bufnr = bufnr })
-					end, { desc = "[T]inymist [P]in", noremap = true })
-
-					vim.keymap.set("n", "<leader>ltu", function()
-						client:exec_cmd({
-							title = "unpin",
-							command = "tinymist.pinMain",
-							arguments = { vim.v.null },
-						}, { bufnr = bufnr })
-					end, { desc = "[T]inymist [U]npin", noremap = true })
-				end
-			elseif server == "lua_ls" then
+			if server == "lua_ls" then
 				opts.settings = {
 					Lua = {
 						diagnostics = { globals = { "vim" } },
 						completion = { callSnippet = "Replace" },
+					},
+				}
+			elseif server == "rust_analyzer" then
+				opts.settings = {
+					["rust-analyzer"] = {
+						cargo = {
+							allFeatures = true,
+						},
+						checkOnSave = {
+							command = "clippy",
+						},
+						inlayHints = {
+							typeHints = true,
+							parameterHints = true,
+						},
 					},
 				}
 			elseif server == "emmet_ls" then

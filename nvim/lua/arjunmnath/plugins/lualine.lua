@@ -47,22 +47,6 @@ return {
 				c = { bg = colors.inactive_bg, fg = colors.semilightgray },
 			},
 		}
-
-		local fidget = require("fidget.progress")
-
-		local function lsp_progress()
-			local messages = fidget.get_progress_messages()
-			if #messages == 0 then
-				return ""
-			end
-
-			local msg = messages[1] -- only show the first
-			local title = msg.title or ""
-			local msg_text = msg.message or ""
-			local percentage = msg.percentage and (msg.percentage .. "%%") or ""
-
-			return string.format("LSP: %s %s %s", title, msg_text, percentage)
-		end
 		-- configure lualine with modified theme
 		lualine.setup({
 			-- options = {
@@ -74,7 +58,7 @@ return {
 			},
 			sections = {
 				lualine_c = {
-					lsp_progress,
+					-- lsp_progress,
 					{
 						function()
 							local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })

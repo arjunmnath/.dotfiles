@@ -35,7 +35,6 @@ return {
 				"clangd",
 				"cmake",
 				"harper_ls",
-				"tinymist",
 			},
 			automatic_installation = {
 				enable = true,
